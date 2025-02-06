@@ -8,7 +8,34 @@ OPERATIONS: list[str] = [ # List of possible operations
 	"SEC",
 	"CSC",
 	"COT",
-]
+] def calculate_trig(operation, angle):
+    # Mengkonversi sudut ke radian
+    angle_rad = math.radians(angle)
+    elif operation == 'tan':
+        return math.tan(angle_rad)
+    elif operation == 'csc':
+        if math.sin(angle_rad) == 0:
+            return "Error: Undefined (Cosecant of 0 degrees)"
+        return 1 / math.sin(angle_rad)
+    elif operation == 'cot':
+        if math.tan(angle_rad) == 0:
+            return "Error: Undefined (Cotangent of 0 degrees)"
+        return 1 / math.tan(angle_rad)
+    else:
+        return "Error: Operation not recognized"
+
+def main():
+    print("Operasi Trigonometri:")
+    print("sin, cos, tan, sec, csc, cot")
+    operation = input("Masukkan operasi trigonometri: ").strip().lower()
+    angle = float(input("Masukkan nilai sudut dalam derajat: "))
+
+    result = calculate_trig(operation, angle)
+    print(f"Hasil {operation}({angle}°) = {result}")
+
+if __name__ == '__main__':
+    main()
+
 
 main_menu: menus.ChoosingMenu = menus.ChoosingMenu()
 main_menu.name = "main"
