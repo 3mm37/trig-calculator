@@ -2,13 +2,24 @@ import math_functions as math
 import menus as menus
 
 OPERATIONS: list[str] = [ # List of possible operations
-	"SIN",
-	"COS",
 	"TAN",
-	"SEC",
 	"CSC",
 	"COT",
-]
+] def calculate_trig(operation, angle):
+    # Mengkonversi sudut ke radian
+    angle_rad = math.radians(angle)
+    elif operation == 'tan':
+        return math.tan(angle_rad)
+    elif operation == 'csc':
+        if math.sin(angle_rad) == 0:
+            return "Error: Undefined (Cosecant of 0 degrees)"
+        return 1 / math.sin(angle_rad)
+    elif operation == 'cot':
+        if math.tan(angle_rad) == 0:
+            return "Error: Undefined (Cotangent of 0 degrees)"
+        return 1 / math.tan(angle_rad)
+    else:
+        return "Error: Operation not recognized"
 
 main_menu: menus.ChoosingMenu = menus.ChoosingMenu()
 main_menu.name = "main"
